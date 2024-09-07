@@ -1,0 +1,34 @@
+<template>
+    <lightning-card title="Personal Calculator">
+        <div class="inputs"> 
+            <div class="slds-form-element">
+                <label class="slds-form-element__label" for="text-input-id-46">
+                <abbr class="slds-required" title="required">* </abbr>Enter First Number</label>
+                <div class="slds-form-element__control">
+                <input name="Num1" onchange={changeHandler} type="text" id="text-input-id-46" placeholder="Number 1…" required="" class="slds-input" />
+                </div>
+                </div>
+                <br>
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label" for="text-input-id-46">
+                    <abbr class="slds-required" title="required">* </abbr>Enter Second Number</label>
+                    <div class="slds-form-element__control">
+                    <input name="Num2" onchange={changeHandler} type="text" id="text-input-id-47" placeholder="Number 2…" required="" class="slds-input" />
+                    </div>
+                    </div>
+        </div>
+        <br>
+
+        <div class="button">
+            <button class="slds-button slds-button_brand" onclick={addfunction}>Add</button>
+            <button class="slds-button slds-button_brand" onclick={subfunction}>Substract</button>
+            <button class="slds-button slds-button_brand"  onclick={multiplyfunction}>Multiply</button>
+            <button class="slds-button slds-button_brand"  onclick={dividefunction}>Divide</button>
+        </div>
+        <br>
+        <div class="Result">
+            <p  id="result" >Output : {result}</p>
+        </div>
+       
+    </lightning-card>
+</template>

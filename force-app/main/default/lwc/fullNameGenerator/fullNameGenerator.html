@@ -1,0 +1,57 @@
+<template>
+    <lightning-card title="Generate your FULL NAME" icon-name="standard:person_name">
+        <div class="name">
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input name="firstname" onchange={namefunction} type="text"
+                    label="Enter first name"></lightning-input>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input name="lastname" onchange={namefunction} type="text"
+                    label="Enter last name"></lightning-input>
+            </div>
+        </div>
+
+        <div class="buttondiv">
+            <lightning-button variant="brand-outline" label="Generate FULL NAME"
+                title="Primary action with lighter look" onclick={handleClick}
+                class="slds-m-left_x-small"></lightning-button>
+        </div>
+        <br>
+        <div class="slds-form-element">
+            <div class="slds-form-element__control">
+                <div class="slds-checkbox">
+                    <input class="checkboxclass" onchange={handleChange} type="checkbox" name="options"
+                        id="checkbox-unique-id-80" value="checkbox-unique-id-80" />
+                    <label class="slds-checkbox__label" for="checkbox-unique-id-80">
+                        <span class="slds-checkbox_faux"></span>
+                        <span class="slds-form-element__label">I am not a Robot</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <br>
+        <template lwc:if={displayMessage}>
+            <p class="Output">{result}</p>
+
+        </template>
+
+        <template lwc:else>
+            <p class="Output">Check Checkbox to see Output</p>
+
+        </template>
+        <template for:each={superstars} for:item="superstarvar">
+            <li class="Output" key={superstarvar}>{superstarvar}</li>
+        </template>
+        <template iterator:superstartiterator={superstars}>
+            <div key={superstartiterator.value}>
+                <div lwc:if={superstartiterator.first} class="list-first"></div>
+                <li class={outputvar}>
+                    {superstartiterator.value}
+                </li>
+
+                <div lwc:if={superstartiterator.last} class="list-last"></div>
+            </div>
+        </template>
+
+    </lightning-card>
+</template>

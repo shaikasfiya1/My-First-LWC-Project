@@ -1,0 +1,94 @@
+<template>
+    <div>
+        <lightning-card title="To Do APP" icon-name="custom:custom89">
+
+        </lightning-card>
+    </div>
+    <br>
+    <!-- We have divided components into three sections -->
+    <div class="slds-grid slds-gutters">
+
+        <div class="slds-col">
+            <!-------------------------------------- This is ADD NEW TASK------------------------------------>
+            <lightning-card title="Add new Task">
+                <div class="slds-p-around_medium lgc-bg">
+                    <!-- This is for Task Name -->
+                    <lightning-input  name="taskname" class="taskname" value={taskname} onchange={changeHandler}
+                        type="text" label="Enter Task" placeholder="type here..." required></lightning-input>
+                </div>
+                <div class="slds-p-around_medium lgc-bg">
+                    <!-- This is for End Date -->
+                    <lightning-input name="taskdate" value={taskdate} onchange={changeHandler} type="date"
+                        label="Set End Date" field-level-help="Default End Date is Today's Date"></lightning-input>
+                </div>
+                <div class="btn">
+                    <!-- This button will reset the inputs -->
+                    <lightning-button variant="brand" label="Reset" title="Primary action" onclick={resetHandler}
+                        class="slds-m-left_x-small"></lightning-button>
+                    <!-- This button will add Task to the To-Do List -->
+                    <lightning-button variant="brand" label="Add Task" title="Primary action" onclick={addTaskHandler}
+                        class="slds-m-left_x-small"></lightning-button>
+                </div>
+            </lightning-card>
+        </div>
+        <div class="slds-col">
+            <!-- -------------------------------------------This is TO DO LIST --------------------------------------------- -->
+            <lightning-card title="To-Do List">
+                <div class="slds-p-around_medium lgc-bg">
+                    <!-- Running through for loop to retrive the items of the incompletetask array and display one by one
+                    Index is used to track that particular item -->
+                    <template for:each={incompletetask} for:item="currtask" for:index="index">
+                        <!-- Using draggable as true to make it draggable and eventlistener to apply action on it -->
+                        <div key={currtask.taskname} class="slds-box slds-theme_shade incompleteg" draggable="true"
+                            ondragstart={dragStartHandler} data-item={index}>
+                            <div class="slds-grid slds-gutters">
+                                <!-- Used grid to divide Task Details and Icons -->
+                                <div class="slds-col slds-size_2-of-3">
+                                    <p class="formattaskname">{currtask.taskname}</p>
+                                    <p><lightning-formatted-date-time
+                                            value={currtask.taskdate}></lightning-formatted-date-time></p>
+                                </div>
+                                <!-- These are icons delete and Check -->
+                                <div class="slds-col slds-size_1-of-3">
+                                    <lightning-button-icon icon-name="utility:delete" name={index}
+                                        onclick={removalHandler} alternative-text="Delete" class="slds-m-left_xx-small"
+                                        title="Delete"></lightning-button-icon>
+                                    <lightning-button-icon icon-name="utility:check" name={index}
+                                        onclick={completetaskHandler} alternative-text="Check"
+                                        class="slds-m-left_xx-small" title="Check"></lightning-button-icon>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- This is have gap between each task item in To-DO List -->
+                        <div key={currtask.taskname}><br></div>
+                    </template>
+
+                </div>
+            </lightning-card>
+        </div>
+        <div class="slds-col">
+            <!--
+             The task from TO-DO list to Completed items can be added in two ways 
+            1.Either we can click 'Check' lightning button
+            2.Or Drag and drop from To-Do List to Completed Items 
+        -->
+            <!-- ----------------------------------------This is COMPLETED ITEMS---------------------------------- -->
+            <lightning-card title="Completed Items">
+                <!-- Using Allow drop and dropElementHandler , allowDrop is only to prevent the default behavior of the handler and dropElementHandler is used to do some action -->
+                <div class="slds-p-around_medium lgc-bg" ondragover={allowDrop} ondrop={dropElementHandler}>
+                    <!-- Eventlistener for completetask -->
+                    <template for:each={completetask} for:item="currtask" for:index="index">
+                        <div key={currtask.taskname} class="slds-box slds-theme_shade completeg">
+                            <div>
+                                <!-- Displaying date in Specific format -->
+                                <p class="formattaskname">{currtask.taskname}</p>
+                                <p><lightning-formatted-date-time value={currtask.taskdate}></lightning-formatted-date-time></p>
+                           </div>
+                        </div>
+                        <div key={currtask.taskname}><br></div>
+                    </template>
+                </div>
+            </lightning-card>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,64 @@
+<template>
+    <lightning-card title="List of Accounts" icon-name="custom:custom14">
+        <lightning-layout class="slds-var-p-around-small">
+            <lightning-layout-item class="slds-var-p-around_small">
+                <template lwc:if={accounts.data}>
+                    <template for:each={accounts.data} for:item="account" for:index="index">
+
+                        <p key={account}>
+                            <lightning-layout vertical-align="center">
+                                <lightning-layout-item>
+                                    <img src={account.PhotoUrl} />
+                                </lightning-layout-item>
+                                <lightning-layout-item padding="around-small">
+                                    <a href="#" data-id={account.Id} onclick={selectedAccountHandler}>
+                                        {account.Name}
+                                    </a>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            <br>
+                        </p>
+                    </template>
+                </template>
+            </lightning-layout-item>
+            <lightning-layout-item class="slds-var-p-around_small">
+                <template lwc:if={selectedAccount}>
+                    <lightning-layout vertical-align="center">
+                        <lightning-layout-item padding="around-small">
+                            <img src={selectedAccount.PhotoUrl} />
+                            
+                        </lightning-layout-item>
+                       
+                        <lightning-layout-item padding="around-small">
+                            <p>{selectedAccount.Name}</p>
+                            
+                        </lightning-layout-item>
+                   
+                        <lightning-layout-item padding="around-small">
+                            <lightning-formatted-date-time>{selectedAccount.Phone}</lightning-formatted-date-time>
+                           
+                        </lightning-layout-item>
+                       
+                        <lightning-layout-item padding="around-small">
+                            <p>{selectedAccount.Industry}</p>
+                           
+                        </lightning-layout-item>
+                       
+                        <lightning-layout-item padding="around-small">
+                            <p>{selectedAccount.Rating}</p>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                    
+
+                   
+
+
+
+                   
+                </template>
+
+            </lightning-layout-item>
+        </lightning-layout>
+
+    </lightning-card>
+</template>

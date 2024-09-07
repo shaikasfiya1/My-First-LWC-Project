@@ -1,0 +1,53 @@
+<template>
+    <!-- ##### Vertical Indicator ##### -->
+        <div class="slds-progress slds-progress_vertical">
+            <ol class="slds-progress__list">
+                <template for:each={stepsArray} for:item="step">
+                    <!-- if FinalComplete -->
+                    <template if:true={step.showFinalComplete}>
+                        <li key={step.label} class="slds-progress__item slds-is-completed">
+                            <span class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success" title={label.DFP_Complete}>
+                                <div class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                                    <lightning-icon icon-name="utility:success" variant="success" size="xx-small" class="slds-icon slds-icon_xx-small"></lightning-icon>
+                                </div>
+                                <span class="slds-assistive-text">{label.DFP_Complete}</span>
+                            </span>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread"><strong>{step.label}</strong></div>
+                        </li>
+                    </template>
+                    <!-- if Complete -->
+                    <template if:true={step.showComplete}>
+                        <li key={step.label} class="slds-progress__item slds-is-completed">
+                            <span class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success" title={label.DFP_Complete}>
+                                <div class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                                    <lightning-icon icon-name="utility:success" variant="success" size="xx-small" class="slds-icon slds-icon_xx-small"></lightning-icon>
+                                </div>
+                                <span class="slds-assistive-text">{label.DFP_Complete}</span>
+                            </span>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{step.label}</div>
+                        </li>
+                    </template>
+                    <!-- if Current -->
+                    <template if:true={step.showCurrent}>
+                        <li key={step.label} class="slds-progress__item slds-is-active">
+                            <div class="slds-progress__marker">
+                                <span class="slds-assistive-text">{label.DFP_Current}</span>
+                            </div>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread"><strong>{step.label}</strong></div>
+                        </li>
+                    </template>
+                    <!-- if Upcoming -->
+                    <template if:true={step.showUpcoming}>
+                        <li key={step.label} class="slds-progress__item">
+                            <div class="slds-progress__marker">
+                                <span class="slds-assistive-text">{label.DFP_Upcoming}</span>
+                            </div>
+                            <div class="slds-progress__item_content slds-grid slds-grid_align-spread">{step.label}</div>
+                        </li>
+                    </template>
+                    
+                </template>
+            </ol>
+        </div>
+    <!-- ##### END: Vertical Indicator ##### -->
+</template>

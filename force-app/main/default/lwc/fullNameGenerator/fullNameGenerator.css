@@ -1,0 +1,14 @@
+.slds-m-left_x-small,.slds-checkbox
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Output
+{
+    text-align: center;
+}
+.list-first,.list-last
+{
+    border: 2px solid rebeccapurple;
+}

@@ -1,0 +1,35 @@
+<template>
+    <!-- THIS WILL DISPLAY LIST OF CONTACTS -->
+    <lightning-card title="List of Contacts" icon-name="custom:custom14">
+        <!-- This is used to display in one column instead of using grid -->
+        <lightning-layout class="slds-var-p-around_small">
+            <lightning-layout-item>
+                <!-- Checking of contacts has data or not -->
+                <template lwc:if={contacts.data}>
+                    <!-- Iterating through contacts -->
+                    <template for:each={contacts.data} for:item="currItem">
+                        <!-- Providing details to child component -->
+                        <!-- on is appended to the event name, the event in child was selection, so onselection is written here -->
+                        <c-contact-details contact={currItem} key={currItem.Id} onselection={selectionHandler}>
+                        </c-contact-details>
+                    </template>
+                </template>
+            </lightning-layout-item>
+            <lightning-layout-item class="slds-var-p-around_small">
+                <template lwc:if={selectedContact}>
+                    <img src={selectedContact.PhotoUrl} />
+                    <p>{selectedContact.Name}</p>
+                    <p>{selectedContact.Title}</p>
+                    <p>
+                        <lightning-formatted-phone value={selectedContact.Phone}>
+                        </lightning-formatted-phone>
+                    </p>
+                    <p>
+                        <lightning-formatted-email value={selectedContact.Email}>
+                        </lightning-formatted-email>
+                    </p>
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

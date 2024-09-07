@@ -1,0 +1,24 @@
+<template>
+    <template if:false={isDistrictVisible}>
+    <lightning-combobox
+        name="progress"
+        label="State"
+        value={value}
+        placeholder="Select State"
+        options={options}
+        onchange={selectState}></lightning-combobox>
+
+        <lightning-button variant="brand" label="Select District" title="Select District" onclick={handleClick}></lightning-button>
+    </template>
+    <template if:true={isDistrictVisible}>
+        <lightning-combobox
+        name="progress"
+        label="District"
+        value={value}
+        placeholder="Select District"
+        options={districtoptions}
+        onchange={selectState}></lightning-combobox>
+    </template>
+
+
+</template>

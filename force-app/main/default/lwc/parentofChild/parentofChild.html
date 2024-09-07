@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Parent Component ">
+        <template lwc:if={displayMessage}>
+
+            <p class="slds-var-p-around_small">show this only when child component invokes</p>
+
+        </template>
+
+        <div class="slds-var-p-around_small">
+            <c-childof-parent ondisplaymsg={displayMessageHandler}></c-childof-parent>
+        </div>
+    </lightning-card>
+</template>

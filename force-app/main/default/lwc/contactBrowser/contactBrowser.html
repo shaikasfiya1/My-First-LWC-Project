@@ -1,0 +1,27 @@
+<template>
+    <!-- To Display Filter -->
+    <c-contact-filter onfilterchange={handleFilterChange}>
+        
+    </c-contact-filter>
+   <div>
+
+   </div>
+   <!-- To Display Tabset -->
+   <div>
+    <lightning-tabset>
+        <lightning-tab label="Grid">
+            <div style="height: 300px;">
+                <lightning-datatable
+                        key-field="id"
+                        data={contactList}
+                        columns={columns}>
+                </lightning-datatable>
+            </div>
+        </lightning-tab>
+        <lightning-tab label="Gallery" title="2nd tab extended title">
+            Two Content !
+        </lightning-tab>
+       
+    </lightning-tabset>
+   </div>
+</template>

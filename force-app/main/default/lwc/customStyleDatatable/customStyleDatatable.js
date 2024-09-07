@@ -10,6 +10,8 @@ const columns = [
         label: 'Title',
         fieldName: 'Title',
     },
+    {},
+    
     {
         label: 'Rank',
         fieldName: 'Rank__c',
